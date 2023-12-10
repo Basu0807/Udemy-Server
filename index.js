@@ -41,8 +41,8 @@ app.get('/',(req,res)=>{
             payment_method_types:["card"],
              line_items:lineItems,
             mode:"payment",
-            success_url:"http://localhost:4000",
-            cancel_url:"https://dainty-pothos-8d469f.netlify.app/",
+            success_url:"https://master--lively-kheer-8f0ecb.netlify.app/",
+            cancel_url:"https://master--lively-kheer-8f0ecb.netlify.app/",
         })
         res.json({id:session.id})
         })
