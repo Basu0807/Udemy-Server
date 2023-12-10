@@ -4,6 +4,6 @@ const middleware = require('../Middleware/middleware')
 
 UserRoutes.post('/register',registerController)
 UserRoutes.post('/login',loginController)
-UserRoutes.post('/profile',middleware,ProfileController)
+UserRoutes.get('/profile',middleware,ProfileController)
 
 module.exports =UserRoutes

@@ -38,6 +38,7 @@ const SpecificProductController= async(req,res)=>{
 
     
     }
+   
 
     const DeleteController= async(req,res)=>{
         const id=req.params.id
@@ -55,5 +56,15 @@ const SpecificProductController= async(req,res)=>{
             await Product.deleteMany({})
         res.send({msg:"Database clear"})
         }
+        const UpdateProductController =async(req,res)=>{
+            await Product.updateMany({}, { $set: { quantity: 1 } })
+            .then((result) => {
+              console.log(`${result.modifiedCount} documents updated successfully.`);
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        res.send({msg:"Database Updated"})
+        }
 
-module.exports={AllProductController,SearchController,AddProductController,SpecificProductController,DeleteController,DeleteAll}
+module.exports={AllProductController,SearchController,AddProductController,SpecificProductController,DeleteController,DeleteAll,UpdateProductController}

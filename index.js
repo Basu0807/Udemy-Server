@@ -3,7 +3,11 @@ const cors =require('cors')
 const UserRoutes = require('./Routes/UserRoutes')
 const { connection } = require('./Config/db')
 const productRoute = require('./Routes/productRoutes')
+const stripe=require("stripe")("sk_test_51OHNDNSEW2AXc16ZBAEHpvqalk8PlE6NnomLVaNBKct3I65YWgGqW7vkw8xlhNha0xCXyVOeaISEDIZ52ty1UOcy00BbHHzkqv")
+
+
 const app =express()
+
 const Port =4000
 
 app.use(express.json()) // body parser( to read the data from the client side)
@@ -37,7 +41,7 @@ app.get('/',(req,res)=>{
             payment_method_types:["card"],
              line_items:lineItems,
             mode:"payment",
-            success_url:"https://dainty-pothos-8d469f.netlify.app/",
+            success_url:"http://localhost:4000",
             cancel_url:"https://dainty-pothos-8d469f.netlify.app/",
         })
         res.json({id:session.id})
