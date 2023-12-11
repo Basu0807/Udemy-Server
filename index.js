@@ -7,14 +7,14 @@ const stripe=require("stripe")("sk_test_51OHNDNSEW2AXc16ZBAEHpvqalk8PlE6NnomLVaN
 
 
 const app =express()
-
+app.use(cors({
+    origin:"*"
+}))
 const Port =4000
 
 app.use(express.json()) // body parser( to read the data from the client side)
 
-app.use(cors({
-    origin:"*"
-}))
+
 
 app.use('/user',UserRoutes)
 app.use('/store',productRoute)
@@ -28,12 +28,12 @@ app.get('/',(req,res)=>{
         const {products}=req.body
         console.log(products)
         const lineItems =products.map((product)=>({
-            price_data:{
+            price:{
                 currency:"inr",
                 product_data:{
                     name:product.heading,
                 },
-                unit_amount:product.price * 100
+                unit_amount:product.offerPrice * 100
             },
             quantity:product.quantity
            }))
