@@ -4,7 +4,7 @@ const UserRoutes = require('./Routes/UserRoutes')
 const { connection } = require('./Config/db')
 const productRoute = require('./Routes/productRoutes')
 const stripe=require("stripe")("sk_test_51OHNDNSEW2AXc16ZBAEHpvqalk8PlE6NnomLVaNBKct3I65YWgGqW7vkw8xlhNha0xCXyVOeaISEDIZ52ty1UOcy00BbHHzkqv")
-require("dotenv").config()
+
 
 const app =express()
 app.use(cors({
