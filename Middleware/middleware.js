@@ -5,7 +5,7 @@ const secretkey ="vasu"
 
 const middleware=(req,res,next)=>{
 const BearerToken = req.headers["authorization"]
-console.log(BearerToken);
+// console.log(BearerToken);
 
 
 if(BearerToken){
