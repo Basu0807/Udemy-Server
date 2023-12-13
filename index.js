@@ -24,28 +24,31 @@ app.get('/',(req,res)=>{
     console.log("Home page");
     })
 
-    app.post("/checkout",async(req,res)=>{
-        const {products}=req.body
-        console.log(products)
-        const lineItems =products.map((product)=>({
-            price:{
-                currency:"inr",
-                product_data:{
-                    name:product.topic,
-                },
-                unit_amount:product.offerPrice 
+    app.post("/checkout", async (req, res) => {
+        const { products, total } = req.body;
+        console.log(products);
+      
+        const lineItems = products.map((product) => ({
+          price_data: {
+            currency: "inr",
+            product_data: {
+              name: product.topic,
             },
-            quantity:product.quantity
-           }))
-           const session =await stripe.checkout.sessions.create({
-            payment_method_types:["card"],
-             line_items:lineItems,
-            mode:"payment",
-            success_url:"https://master--lively-kheer-8f0ecb.netlify.app/",
-            cancel_url:"https://master--lively-kheer-8f0ecb.netlify.app/",
-        })
-        res.json({id:session.id})
-        })
+            unit_amount: product.offerPrice,
+          },
+          quantity: product.quantity,
+        }));
+      
+        const session = await stripe.checkout.sessions.create({
+          payment_method_types: ["card"],
+          line_items: lineItems,
+          mode: "payment",
+          success_url: "https://master--lively-kheer-8f0ecb.netlify.app/",
+          cancel_url: "https://master--lively-kheer-8f0ecb.netlify.app/",
+        });
+      
+        res.json({ id: session.id });
+      });
     
     app.listen(Port, async()=>{
         try {
