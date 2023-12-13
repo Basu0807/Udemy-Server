@@ -25,7 +25,7 @@ app.get('/',(req,res)=>{
     })
 
     app.post("/checkout", async (req, res) => {
-        const { products, total } = req.body;
+        const { products } = req.body;
         console.log(products);
       
         const lineItems = products.map((product) => ({
