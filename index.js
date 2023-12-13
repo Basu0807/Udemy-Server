@@ -34,7 +34,7 @@ app.get('/',(req,res)=>{
             product_data: {
               name: product.topic,
             },
-            unit_amount: product.offerPrice,
+            unit_amount: product.offerPrice*100,
           },
           quantity: product.quantity,
         }));
