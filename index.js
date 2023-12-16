@@ -3,6 +3,7 @@ const cors =require('cors')
 const UserRoutes = require('./Routes/UserRoutes')
 const { connection } = require('./Config/db')
 const productRoute = require('./Routes/productRoutes')
+const MyLearningRoutes = require('./Routes/MylearningRoutes')
 const stripe=require("stripe")("sk_test_51OHNDNSEW2AXc16ZBAEHpvqalk8PlE6NnomLVaNBKct3I65YWgGqW7vkw8xlhNha0xCXyVOeaISEDIZ52ty1UOcy00BbHHzkqv")
 
 
@@ -18,6 +19,7 @@ app.use(express.json()) // body parser( to read the data from the client side)
 
 app.use('/user',UserRoutes)
 app.use('/store',productRoute)
+app.use('/my',MyLearningRoutes)
 
 app.get('/',(req,res)=>{
     res.send("This is our HomePage")
