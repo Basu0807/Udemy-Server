@@ -2,7 +2,7 @@ const MyLearning =require('../Models/purchasedModel')
 
 const Purchase = async (req, res) => {
     const data = req.body;
-    console.log(data);
+    // console.log(data);
   
     try {
       const user = await MyLearning.findOne({ "email": data.email });
