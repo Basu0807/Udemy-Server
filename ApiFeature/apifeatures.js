@@ -9,6 +9,7 @@ class ApiFeatures{
             $or: [
               { category: { $regex: this.queryStr.keyword, $options: 'i' } },
               { subcategory: { $regex: this.queryStr.keyword, $options: 'i' } },
+              { topic: { $regex: this.queryStr.keyword, $options: 'i' } },
             ],
           };
     
